@@ -1,35 +1,53 @@
-# Lunaris Sentient Core
+#Lunaris Sentient Core
 
-## Introdução
-O **Lunaris Sentient Core** é um sistema avançado projetado para fornecer segurança e proteção à infraestrutura da **Moon Cloud Services**, garantindo a proteção dos servidores contra ataques cibernéticos e malware. Combinando monitoramento em tempo real e criptografia robusta, o Lunaris atua como a primeira linha de defesa para a segurança digital.
+## Introduction
 
-## Funcionalidades
-- **Monitoramento de Tráfego**: O Lunaris monitora constantemente o tráfego de dados entre os servidores, analisando padrões e detectando anomalias.
-- **Proteção Contra Malware**: Utilizando técnicas de detecção avançadas, o Lunaris identifica e neutraliza ameaças de malware antes que possam causar danos.
-- **Proteção DDoS**: O sistema é projetado para mitigar ataques DDoS, protegendo a disponibilidade dos serviços da Moon Cloud Services.
-- **Comunicação Segura**: Todos os dados entre os servidores são transmitidos de forma segura usando criptografia AES-256 e WireGuard, permitindo que o Lunaris tome decisões informadas sobre o estado da infraestrutura.
+**Lunaris Sentient Core** is an advanced system designed to provide security and protection to the **Moon Cloud Services** infrastructure, ensuring the protection of servers against cyber attacks and malware. Combining real-time monitoring and robust encryption, Lunaris acts as the first line of defense for digital security.
 
-**Tecnologias Utilizadas**
-* **Linguagem de Programação:** Python
-* **Frameworks e Bibliotecas:** TensorFlow, PyTorch, scikit-learn, Flask (para API), Pandas (para manipulação de dados)
-* **Infraestrutura:** Baseado no modelo Llama 3.2 com 90 bilhões de parâmetros, rodando em uma infraestrutura robusta e escalável.
-* ## Instalação
-O Lunaris não pode ser instalado em qualquer computador. Ele foi projetado para rodar em uma infraestrutura específica. Para instalação e configuração, os interessados devem entrar em contato com a **Moon Cloud Services**, onde nossa equipe especializada realizará a instalação e adaptação necessárias. Futuros desenvolvimentos podem permitir uma maior flexibilidade de instalação.
+## Features
 
-## Exemplos de Uso
-O Lunaris deve ser operado em um servidor único que não esteja conectado à internet, garantindo segurança máxima. O sistema poderá ser configurado para proteger múltiplos servidores em uma infraestrutura, coletando informações de tráfego e sistema operacional. O processo de análise inclui:
-1. **Análise de Tráfego**: O Lunaris analisa o tráfego em busca de padrões anômalos.
-2. **Classificação do Estado do Servidor**: O servidor é marcado como "Ok" se estiver normal ou "Segurança Violada Anteriormente" se um ataque for detectado.
-3. **Resposta a Incidentes**: Em caso de ataque, o Lunaris bloqueará o tráfego e realizará uma análise detalhada, revisando arquivos, verificando o kernel, e corrigindo problemas automaticamente.
+- **Traffic Monitoring**: Lunaris constantly monitors data traffic between servers, analyzing patterns and detecting anomalies.
 
-## Contribuições
-Atualmente, não temos diretrizes de contribuição estabelecidas, mas encorajamos a participação da comunidade no futuro.
+- **Malware Protection**: Using advanced detection techniques, Lunaris identifies and neutralizes malware threats before they can cause damage.
 
-## Licença
-**[MIT License]**:
+- **DDoS Protection**: The system is designed to mitigate DDoS attacks, protecting the availability of Moon Cloud Services.
 
-## Contato e Suporte
-Para suporte e perguntas, entre em contato conosco através do nosso servidor do Discord. Temos canais dedicados para comunicação com a comunidade e desenvolvedores, garantindo que suas dúvidas sejam rapidamente respondidas.(https://discord.gg/b4Aza9gWSB)
+- **Secure Communication**: All data between servers is transmitted securely using AES-256 and WireGuard encryption, allowing Lunaris to make informed decisions about the state of the infrastructure.
 
-## Conclusão
-O Lunaris Sentient Core representa um passo significativo em direção a uma infraestrutura mais segura e resiliente. Estamos animados para compartilhar esta jornada com a comunidade e agradecemos qualquer feedback que possa nos ajudar a melhorar nosso produto.
+**Technologies Used**
+
+* **Programming Singuage:** Python
+
+* **Frameworks and Libraries:** TensorFlow, PyTorch, scikit-learn, Flask (for API), Pandas (for data manipulation)
+
+* **Infrastructure:** Based on the Llama 3.2 model with 90 billion parameters, running on a robust and scalable infrastructure.
+
+* ## Installation
+
+Lunaris cannot be installed on any computer. It was designed to run on a specific infrastructure. For installation and configuration, those interested should contact **Moon Cloud Services**, where our specialized team will perform the necessary installation and adaptation. Future developments may allow greater installation flexibility.
+
+## Examples of Use
+
+Lunaris must be operated on a single server that is not connected to the internet, ensuring maximum security. The system can be configured to protect multiple servers in an infrastructure, collecting traffic and operating system information. The analysis process includes:
+
+1. **Traffic Analysis**: Lunaris analyzes traffic for anomalous patterns.
+
+2. **Server State Classification**: The server is marked as "Ok" if it is normal or "Previously Violated Security" if an attack is detected.
+
+3. **Response to Incidents**: In case of an attack, Lunaris will block traffic and perform a detailed analysis, reviewing files, checking the kernel, and fixing problems automatically.
+
+## Contributions
+
+Currently, we do not have established contribution guidelines, but we encourage community participation in the future.
+
+## License
+
+**[MIT License]**
+
+## Contact and Support
+
+For support and questions, please contact us through our Discord server. We have dedicated channels for communication with the community and developers, ensuring that your questions are quickly answered. (https://discord.gg/b4Aza9gWSB)
+
+## Conclusion
+
+Lunaris Sentient Core represents a significant step towards a safer and more resilient infrastructure. We are excited to share this journey with the community and appreciate any feedback that can help us improve our product.
