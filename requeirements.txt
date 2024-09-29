@@ -1,0 +1,45 @@
+# Flask - Framework web leve para construir a interface e API
+Flask==2.0.3
+
+# Flask-SocketIO - Para comunicação em tempo real entre servidores
+Flask-SocketIO==5.0.1
+
+# Cryptography - Para criptografia AES-256 e outras funções de segurança
+cryptography==3.4.7
+
+# Requests - Para fazer chamadas HTTP
+requests==2.26.0
+
+# Pandas - Para manipulação e análise de dados (opcional, se necessário)
+pandas==1.3.3
+
+# NumPy - Para operações numéricas e manipulação de arrays
+numpy==1.21.2
+
+# Pytest - Para testes automatizados
+pytest==6.2.5
+
+# Flask-RESTful - Para criar APIs RESTful
+Flask-RESTful==0.3.9
+
+# Flask-Cors - Para permitir CORS (Cross-Origin Resource Sharing)
+Flask-Cors==3.0.10
+
+# PyYAML - Para manipulação de arquivos YAML, se você precisar de configuração em YAML
+PyYAML==5.4.1
+
+# Logging - Para logging avançado (não precisa ser instalado, é uma biblioteca padrão do Python, mas pode ser mencionado)
+# Para personalizar logs de segurança e tráfego
+
+# Schedule - Para agendamento de tarefas, se necessário
+schedule==1.1.0
+
+# Gunicorn - Servidor WSGI para executar a aplicação Flask em produção
+gunicorn==20.1.0
+
+# paramiko - Para SSH e comunicação segura
+paramiko==2.7.2
+
+# wireguard - Se você planeja implementar WireGuard no seu projeto
+
+# Lembre-se de que isso pode precisar de configurações de sistema ou de ambiente.
