@@ -1,4 +1,4 @@
-#Lunaris Sentient Core
+##Lunaris Sentient Core
 
 ## Introduction
 
