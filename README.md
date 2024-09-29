@@ -29,7 +29,7 @@ Atualmente, não temos diretrizes de contribuição estabelecidas, mas encorajam
 **[MIT License]**:
 
 ## Contato e Suporte
-Para suporte e perguntas, entre em contato conosco através do nosso servidor do Discord. Temos canais dedicados para comunicação com a comunidade e desenvolvedores, garantindo que suas dúvidas sejam rapidamente respondidas.
+Para suporte e perguntas, entre em contato conosco através do nosso servidor do Discord. Temos canais dedicados para comunicação com a comunidade e desenvolvedores, garantindo que suas dúvidas sejam rapidamente respondidas.(https://discord.gg/b4Aza9gWSB)
 
 ## Conclusão
 O Lunaris Sentient Core representa um passo significativo em direção a uma infraestrutura mais segura e resiliente. Estamos animados para compartilhar esta jornada com a comunidade e agradecemos qualquer feedback que possa nos ajudar a melhorar nosso produto.
