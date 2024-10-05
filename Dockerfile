@@ -1,25 +1,25 @@
-# Use uma imagem base oficial do Python
+# Use an official Python base image
 FROM python:3.8-slim-buster
 
-# Define o diretório de trabalho no container
+# Sets the working directory in the container
 WORKDIR /app
 
-# Copia os arquivos de requisitos para o diretório de trabalho
+# Copies the requirements files to the working directory
 COPY requirements.txt .
 
-# Instala as dependências do projeto
+# Installs the project's dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia o código do projeto para o diretório de trabalho
+# Copies the project code to the working directory
 COPY . .
 
-# Expõe a porta que a aplicação usará
+# Exposes the port that the application will use
 EXPOSE 5000
 
-# Define as variáveis de ambiente
+# Sets the environment variables
 ENV DEBUG=False
 ENV HOST=0.0.0.0
 ENV PORT=5000
 
-# Comando para rodar a aplicação
+# Command to run the application
 CMD ["python", "app/main.py"]
