@@ -1,53 +1,93 @@
-## Lunaris Sentient Core
+# Lunaris Sentient Core
 
-## Introduction
-
-**Lunaris Sentient Core** is an advanced system designed to provide security and protection to the **Moon Cloud Services** infrastructure, ensuring the protection of servers against cyber attacks and malware. Combining real-time monitoring and robust encryption, Lunaris acts as the first line of defense for digital security.
+Lunaris Sentient Core is an advanced cybersecurity system that utilizes artificial intelligence for traffic anomaly detection and malware protection.
 
 ## Features
 
-- **Traffic Monitoring**: Lunaris constantly monitors data traffic between servers, analyzing patterns and detecting anomalies.
+- Network traffic analysis using anomaly detection
+- Malware detection using deep learning
+- Secure communication with encryption
 
-- **Malware Protection**: Using advanced detection techniques, Lunaris identifies and neutralizes malware threats before they can cause damage.
+## Installation
 
-- **DDoS Protection**: The system is designed to mitigate DDoS attacks, protecting the availability of Moon Cloud Services.
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/lunaris-sentient-core.git
+   cd lunaris-sentient-core
+   ```
 
-- **Secure Communication**: All data between servers is transmitted securely using AES-256 and WireGuard encryption, allowing Lunaris to make informed decisions about the state of the infrastructure.
+2. Install the dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
 
-**Technologies Used**
+3. Configure the environment variables (or use a .env file):
+   ```
+   export DEBUG=False
+   export HOST=0.0.0.0
+   export PORT=5000
+   export SECRET_KEY=your-secret-key
+   ```
 
-* **Programming Singuage:** Python
+4. Run the application:
+   ```
+   python app/main.py
+   ```
 
-* **Frameworks and Libraries:** TensorFlow, PyTorch, scikit-learn, Flask (for API), Pandas (for data manipulation)
+## Usage
 
-* **Infrastructure:** Based on the Llama 3.2 model with 90 billion parameters, running on a robust and scalable infrastructure.
+### Traffic Analysis
 
-* ## Installation
+To analyze traffic, make a POST request to `/analyze_traffic` with encrypted traffic data:
 
-Lunaris cannot be installed on any computer. It was designed to run on a specific infrastructure. For installation and configuration, those interested should contact **Moon Cloud Services**, where our specialized team will perform the necessary installation and adaptation. Future developments may allow greater installation flexibility.
+```python
+import requests
+from app.utils.encryption import Encryption
 
-## Examples of Use
+encryption = Encryption()
+traffic_data = [...]  # Your traffic data here
+encrypted_data = encryption.encrypt_message(str(traffic_data))
 
-Lunaris must be operated on a single server that is not connected to the internet, ensuring maximum security. The system can be configured to protect multiple servers in an infrastructure, collecting traffic and operating system information. The analysis process includes:
+response = requests.post('http://localhost:5000/analyze_traffic', json={'data': encrypted_data})
+encrypted_result = response.json()['result']
+result = encryption.decrypt_message(encrypted_result)
+print(result)
+```
 
-1. **Traffic Analysis**: Lunaris analyzes traffic for anomalous patterns.
+### Malware Detection
 
-2. **Server State Classification**: The server is marked as "Ok" if it is normal or "Previously Violated Security" if an attack is detected.
+To scan for malware, make a POST request to `/scan_malware` with encrypted file data:
 
-3. **Response to Incidents**: In case of an attack, Lunaris will block traffic and perform a detailed analysis, reviewing files, checking the kernel, and fixing problems automatically.
+```python
+import requests
+from app.utils.encryption import Encryption
 
-## Contributions
+encryption = Encryption()
+file_data = [...]  # Your file data here
+encrypted_data = encryption.encrypt_message(str(file_data))
 
-Currently, we do not have established contribution guidelines, but we encourage community participation in the future.
+response = requests.post('http://localhost:5000/scan_malware', json={'data': encrypted_data})
+encrypted_result = response.json()['result']
+result = encryption.decrypt_message(encrypted_result)
+print(result)
+```
 
-## License
+## Tests
 
-**[MIT License]**
+Run the tests with:
 
-## Contact and Support
+```
+pytest
+```
 
-For support and questions, please contact us through our Discord server. We have dedicated channels for communication with the community and developers, ensuring that your questions are quickly answered. (https://discord.gg/b4Aza9gWSB)
+## Deployment with Docker
 
-## Conclusion
+1. Build the Docker image:
+   ```
+   docker build -t lunaris-sentient-core .
+   ```
 
-Lunaris Sentient Core represents a significant step towards a safer and more resilient infrastructure. We are excited to share this journey with the community and appreciate any feedback that can help us improve our product.
+2. Run the container:
+   ```
+   docker run -p 5000:5000 -e SECRET_KEY=your-secret-key lunaris-sentient-core
+   ```
