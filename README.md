@@ -12,8 +12,8 @@ Lunaris Sentient Core is an advanced cybersecurity system that utilizes artifici
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/lunaris-sentient-core.git
-   cd lunaris-sentient-core
+   git clone 
+   cd 
    ```
 
 2. Install the dependencies:
