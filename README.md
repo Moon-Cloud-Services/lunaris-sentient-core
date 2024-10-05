@@ -20,7 +20,7 @@ cd lunaris-sentient-core
 **2. Install Dependencies:**
 
 ```bash
-pip install -r requirements.txt
+pip install flask tensorflow scikit-learn pandas cryptography pytest numpy
 ```
 
 **3. Configure the Environment (Optional):**
