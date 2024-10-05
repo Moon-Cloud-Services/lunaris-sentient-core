@@ -12,7 +12,7 @@ Lunaris Sentient Core is an advanced cybersecurity system that utilizes artifici
 
 1. Clone the repository:
    ```
-   git clone https://github.com/Moon-Cloud-Services/MoonCloud-Developer.git
+   git clone https://github.com/Moon-Cloud-Services/lunaris-sentient-core.git
    cd lunaris-sentient-core
    ```
 
