@@ -36,109 +36,33 @@ Lunaris is a powerful AI security tool designed to protect servers against cyber
 pip install flask tensorflow scikit-learn pandas pefile
 ```
 
-**3. Configure the Environment (Optional):**
-
-You can configure the environment variables directly or use a `.env` file. The following are the environment variables and their default values:
-
-* `DEBUG`: Set to `True` for debugging information (default: `False`)
-* `HOST`: The host interface on which the application listens (default: `0.0.0.0`)
-* `PORT`: The port on which the application listens (default: `5000`)
-* `SECRET_KEY`: A secret key used for encryption (**required**)
-
-**Example with environment variables:**
-
-```bash
-export DEBUG=False
-export HOST=0.0.0.0
-export PORT=5000
-export SECRET_KEY=your-secret-key
-```
-
-**Example with a `.env` file (create a file named `.env` in the project root):**
-
-```
-DEBUG=False
-HOST=0.0.0.0
-PORT=5000
-SECRET_KEY=your-secret-key
-```
-
-**4. Run the Application:**
+**3. Run the Application:**
 
 ```bash
 python -m app.main
 ```
 
-## Usage
+## Uso
 
-### Traffic Analysis
-
-To analyze traffic, make a POST request to `/analyze_traffic` with encrypted traffic data:
-
-```python
-import requests
-from app.utils.encryption import Encryption
-
-encryption = Encryption("your_secret_key_here")
-traffic_data = [...]  # Your traffic data here
-encrypted_data = encryption.encrypt_message(str(traffic_data))
-
-response = requests.post('http://localhost:5000/analyze_traffic', json={'data': encrypted_data})
-encrypted_result = response.json()['result']
-result = encryption.decrypt_message(encrypted_result)
-print(result)
-```
-
-### Malware Detection
-
-To scan for malware, make a POST request to `/scan_malware` with encrypted file data:
-
-```python
-import requests
-from app.utils.encryption import Encryption
-
-encryption = Encryption("your_secret_key_here")
-file_data = [...]  # Your file data here
-encrypted_data = encryption.encrypt_message(str(file_data))
-
-response = requests.post('http://localhost:5000/scan_malware', json={'data': encrypted_data})
-encrypted_result = response.json()['result']
-result = encryption.decrypt_message(encrypted_result)
-print(result)
-```
-
-## Common Errors and Troubleshooting
-
-**ModuleNotFoundError: No module named 'app'**
-
-Ensure that you're running the script from the root directory of the project and that your PYTHONPATH is set correctly.
-
-**ValueError: Fernet key must be 32 url-safe base64-encoded bytes**
-
-Make sure you are initializing the encryption class with the correct key.
-
-**TypeError: Encryption.init() missing 1 required positional argument: 'key'**
-
-Ensure you pass the key when creating an instance of the Encryption class.
-
-## Tests
-
-Run the tests with:
+**4. Interface Web Acesse a página de upload:**
 
 ```bash
-pytest
+Abra o navegador e vá para http://127.0.0.1:5000/upload_page
 ```
 
-## Deployment with Docker
-
-**Build the Docker image:**
-
+ ## Treinamento de Modelo
 ```bash
-docker build -t lunaris-sentient-core .
+Arquivos Seguros: Envie arquivos seguros e defina o label como 0.
+Arquivos Maliciosos: Envie arquivos maliciosos e defina o label como 1.
+Labels Opcionais: Deixe o campo de labels vazio para auto-detecção.
 ```
+## Escaneamento de Arquivos:
 
-**Run the container:**
+Envie um arquivo para escaneamento e veja os resultados.
 
-```bash
-docker run -p 5000:5000 -e SECRET_KEY=your-secret-key lunaris-sentient-core
+# Treinamento do Modelo:
+
+Utilize o script lunaris_cli.py para treinar o modelo com os arquivos renomeados:
+```
+python lunaris_cli.py caminho/para/seu/arquivo.exe
 ```
