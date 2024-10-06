@@ -1,26 +1,39 @@
-## Lunaris Sentient Core
+# Lunaris Sentient Core
 
-Lunaris Sentient Core is an advanced cybersecurity system that utilizes artificial intelligence for traffic anomaly detection and malware protection.
+## About the Project
+
+Lunaris is a powerful AI security tool designed to protect servers against cyberattacks and malware. It offers advanced features for analyzing files, detecting anomalies in network traffic, and continuously self-training, becoming smarter with each file it checks.
 
 ## Features
 
-* Network traffic analysis using anomaly detection
-* Malware detection using deep learning
-* Secure communication with encryption
+1. **Anomaly Detection**:
+   - Monitors network traffic to identify suspicious or unusual behaviors.
+   - Uses machine learning models to detect anomalies in real-time.
+
+2. **Malware Detection**:
+   - Continuous monitoring of files on the server.
+   - Analyzes newly downloaded files to detect potential malware.
+   - Self-trains based on newly verified files.
+
+3. **Automatic Training**:
+   - Continuously self-trains based on newly verified files.
+   - Optional labels for auto-detection of previously submitted malware patterns.
+
+4. **User Interface**:
+   - User-friendly upload page for submitting files for training and scanning.
+   - Supports multiple file types, including `.exe`, `.csv`, and `.json`.
 
 ## Installation
 
-**1. Clone the Repository:**
-
-```bash
-git clone https://github.com/Moon-Cloud-Services/lunaris-sentient-core.git
-cd lunaris-sentient-core
-```
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/lunaris-sentient-core.git
+   cd lunaris-sentient-core
 
 **2. Install Dependencies:**
 
 ```bash
-pip install flask tensorflow scikit-learn pandas cryptography pytest numpy
+pip install flask tensorflow scikit-learn pandas pefile
 ```
 
 **3. Configure the Environment (Optional):**
