@@ -18,42 +18,42 @@ class TrafficService:
         self.logger.info("StandardScaler fitted successfully: mean_=%s, var_=%s", self.scaler.mean_, self.scaler.var_)
 
     def fit_and_scale(self, data):
-        self.logger.info("Iniciando o ajuste e transformação dos dados")
+        self.logger.info("Starting the adjustment and transformation of the data")
         processed_data = self.preprocess_data(data)
-        self.logger.info("Dados processados: %s", processed_data)
+        self.logger.info("Data processed: %s", processed_data)
         self.fit_scaler(processed_data)
         return self.scaler.transform(processed_data)
 
     def analyze_traffic(self, data):
-        self.logger.info("Iniciando análise de tráfego")
+        self.logger.info("Starting Traffic Analysis")
         processed_data = self.preprocess_data(data)
-        self.logger.info("Forma dos dados processados: %s", processed_data.shape)
+        self.logger.info("Form of data processed: %s", processed_data.shape)
         
         try:
             scaled_data = self.scaler.transform(processed_data)
         except NotFittedError:
-            self.logger.info("Scaler não ajustado, iniciando ajuste")
+            self.logger.info("Untuned scaler, starting tuning")
             self.fit_scaler(processed_data)
             scaled_data = self.scaler.transform(processed_data)
         
-        self.logger.info("Dados escalonados: %s", scaled_data)
+        self.logger.info("Scaled data: %s", scaled_data)
         anomalies = self.anomaly_detector.detect(scaled_data)
         result = {"anomalies": anomalies.tolist()}
-        self.logger.info("Resultado da análise: %s", result)
+        self.logger.info("Result of the analysis: %s", result)
         return result
 
     def preprocess_data(self, data):
-        self.logger.info("Iniciando pré-processamento dos dados")
+        self.logger.info("Starting Data Preprocessing")
         try:
             df = pd.read_csv(io.BytesIO(data))
-            self.logger.info("Dados lidos como CSV")
+            self.logger.info("Data read as CSV")
             return df.values
         except pd.errors.ParserError:
-            self.logger.info("Erro ao ler CSV, tentando JSON")
+            self.logger.info("Error reading CSV, trying JSON")
             try:
                 df = pd.read_json(io.BytesIO(data))
-                self.logger.info("Dados lidos como JSON")
+                self.logger.info("Data read as JSON")
                 return df.values
             except ValueError:
-                self.logger.error("Erro ao ler o arquivo, nem CSV nem JSON")
+                self.logger.error("Error reading the file, neither CSV nor JSON")
                 raise ValueError("The provided file is neither a valid CSV nor JSON.")
