@@ -8,7 +8,7 @@ class AnomalyDetector:
         self.model.fit(data)
 
     def detect(self, data):
-        # Certifique-se de que o modelo foi ajustado
+        # Make sure the template has been adjusted
         if not hasattr(self.model, 'estimators_'):
             self.train(data)
         return self.model.predict(data)
