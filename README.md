@@ -27,7 +27,7 @@ Lunaris is a powerful AI security tool designed to protect servers against cyber
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/lunaris-sentient-core.git
+   git clone https://github.com/Moon-Cloud-Services/lunaris-sentient-core.git
    cd lunaris-sentient-core
 
 **2. Install Dependencies:**
