@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Arquivos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        input[type="file"] {
+            padding: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .result h2 {
+            text-align: center;
+        }
+        .result p {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload de Arquivos para Treinamento</h1>
+        <form action="/train_malware" method="post" enctype="multipart/form-data" id="trainingForm">
+            <label for="files">Escolha arquivos (inclua arquivos maliciosos e não maliciosos):</label>
+            <input type="file" name="files" id="files" accept=".csv, .json, .exe" multiple required>
+            <label for="labels">Labels (0 para seguro, 1 para malicioso, separados por vírgulas - opcional):</label>
+            <input type="text" name="labels" id="labels">
+            <button type="submit">Enviar para Treinamento</button>
+        </form>
+        <h1>Upload de Arquivos para Escaneamento</h1>
+        <form action="/upload_malware" method="post" enctype="multipart/form-data" id="uploadForm">
+            <label for="file">Escolha um arquivo:</label>
+            <input type="file" name="file" id="file" accept=".csv, .json, .exe" required>
+            <button type="submit">Enviar</button>
+        </form>
+        <div class="result" id="result">
+            <h2>Resultado da Análise</h2>
+            <p id="resultContent"></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('trainingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch('/train_malware', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('resultContent').textContent = JSON.stringify(result);
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch('/upload_malware', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('resultContent').textContent = JSON.stringify(result);
+        });
+    </script>
+</body>
+</html>
