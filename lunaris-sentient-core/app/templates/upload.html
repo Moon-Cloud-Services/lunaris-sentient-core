@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload de Arquivos</title>
+    <title>File Upload</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -56,22 +56,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Upload de Arquivos para Treinamento</h1>
+        <h1>Uploading Files for Training</h1>
         <form action="/train_malware" method="post" enctype="multipart/form-data" id="trainingForm">
             <label for="files">Escolha arquivos (inclua arquivos maliciosos e não maliciosos):</label>
             <input type="file" name="files" id="files" accept=".csv, .json, .exe" multiple required>
-            <label for="labels">Labels (0 para seguro, 1 para malicioso, separados por vírgulas - opcional):</label>
+            <label for="labels">Labels (0 for safe, 1 for malicious, separated by commas - optional):</label>
             <input type="text" name="labels" id="labels">
-            <button type="submit">Enviar para Treinamento</button>
+            <button type="submit">Submit for Training</button>
         </form>
-        <h1>Upload de Arquivos para Escaneamento</h1>
+        <h1>File Upload for Scanning</h1>
         <form action="/upload_malware" method="post" enctype="multipart/form-data" id="uploadForm">
-            <label for="file">Escolha um arquivo:</label>
+            <label for="file">Choose a file:</label>
             <input type="file" name="file" id="file" accept=".csv, .json, .exe" required>
-            <button type="submit">Enviar</button>
+            <button type="submit">Sendr</button>
         </form>
         <div class="result" id="result">
-            <h2>Resultado da Análise</h2>
+            <h2>Analysis Result</h2>
             <p id="resultContent"></p>
         </div>
     </div>
