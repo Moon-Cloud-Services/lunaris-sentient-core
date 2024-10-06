@@ -6,7 +6,7 @@ def main():
     parser.add_argument("file_path", help="Path to the file to be scanned")
     args = parser.parse_args()
 
-    input_shape = (3,)  # Ajustar conforme necessário
+    input_shape = (3,)  # Adjust as needed
     malware_service = MalwareService(input_shape)
 
     with open(args.file_path, 'rb') as file:
