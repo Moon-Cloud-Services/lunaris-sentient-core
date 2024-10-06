@@ -26,30 +26,30 @@ def analyze():
 
 @bp.route("/upload_traffic", methods=["POST"])
 def upload_traffic():
-    logger.info("Recebendo arquivo para análise de tráfego")
+    logger.info("Receiving file for traffic analysis")
     if 'file' not in request.files:
-        logger.error("Nenhum arquivo encontrado na requisição")
+        logger.error("No files found in the request")
         return jsonify({"error": "No file part"}), 400
     file = request.files['file']
     if file.filename == '':
-        logger.error("Nenhum arquivo selecionado")
+        logger.error("No files selected")
         return jsonify({"error": "No selected file"}), 400
     if not file.filename.endswith(('.csv', '.json')):
-        logger.error("Tipo de arquivo inválido")
+        logger.error("Invalid file type")
         return jsonify({"error": "Invalid file type. Only CSV and JSON are allowed."}), 400
     file_content = file.read()
     try:
         result = traffic_service.analyze_traffic(file_content)
-        logger.info("Resultado da análise: %s", result)
+        logger.info("Result of the analysis: %s", result)
         report = generate_report(result)
         return jsonify(result), report
     except ValueError as e:
-        logger.error("Erro ao processar o arquivo: %s", str(e))
+        logger.error("Error processing the file: %s", str(e))
         return jsonify({"error": str(e)}), 400
 
 def generate_report(result):
     report = {
         "analysis": result,
-        "details": "Análise completa dos dados enviados."
+        "details": "Full analysis of the submitted data."
     }
     return json.dumps(report, indent=4)
