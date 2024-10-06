@@ -6,26 +6,26 @@ import os
 logger = logging.getLogger(__name__)
 
 def extract_features(file_path):
-    logger.info("Iniciando extração de features do arquivo: %s", file_path)
+    logger.info("Starting to extract features from the file: %s", file_path)
     try:
-        # Verifique o tamanho do arquivo antes de processá-lo
+        # Check the file size before processing it
         file_size = os.path.getsize(file_path)
         if file_size == 0:
-            raise pefile.PEFormatError('O arquivo está vazio')
+            raise pefile.PEFormatError('The file is empty')
         
-        logger.info("Tamanho do arquivo: %d bytes", file_size)
+        logger.info("File size: %d bytes", file_size)
 
         pe = pefile.PE(file_path)
         features = {
             'entry_point': pe.OPTIONAL_HEADER.AddressOfEntryPoint,
             'image_base': pe.OPTIONAL_HEADER.ImageBase,
             'checksum': pe.OPTIONAL_HEADER.CheckSum,
-            # Adicione mais features conforme necessário
+            # Add more features as needed
         }
-        logger.info("Features extraídas com sucesso: %s", features)
+        logger.info("Successfully extracted features: %s", features)
         return features
     except pefile.PEFormatError as e:
-        logger.error("Erro ao extrair features do arquivo: %s", str(e))
+        logger.error("Error extracting features from file: %s", str(e))
         raise
 
 def hash_file(file_path):
