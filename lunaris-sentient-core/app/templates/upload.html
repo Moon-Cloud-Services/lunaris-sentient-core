@@ -58,7 +58,7 @@
     <div class="container">
         <h1>Uploading Files for Training</h1>
         <form action="/train_malware" method="post" enctype="multipart/form-data" id="trainingForm">
-            <label for="files">Escolha arquivos (inclua arquivos maliciosos e não maliciosos):</label>
+            <label for="files">Choose files (include malicious and non-malicious files):</label>
             <input type="file" name="files" id="files" accept=".csv, .json, .exe" multiple required>
             <label for="labels">Labels (0 for safe, 1 for malicious, separated by commas - optional):</label>
             <input type="text" name="labels" id="labels">
