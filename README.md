@@ -27,7 +27,6 @@ Lunaris Sentient Core é um sistema de detecção de malware baseado em aprendiz
 
     ```sh
     python -m venv venv
-    source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
     ```
 
 3. Instale as dependências:
