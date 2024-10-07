@@ -51,7 +51,7 @@ Para iniciar o servidor Flask, execute:
 
 ```sh
 cd lunaris-sentient-core\lunaris-sentient-core-main\lunaris-system\lunaris-core
-python -m main.py
+python main.py
 ```
 
 ### Acessando a Aplicação
