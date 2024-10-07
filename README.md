@@ -22,7 +22,7 @@ Lunaris Sentient Core é um sistema de detecção de malware baseado em aprendiz
 1. Clone o repositório:
 
     ```sh
-    git clone https://github.com/seu-usuario/lunaris-sentient-core.git
+    git clone https://github.com/Moon-Cloud-Services/lunaris-sentient-core.git
     cd lunaris-sentient-core
     ```
 
