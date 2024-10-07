@@ -50,7 +50,8 @@ Lunaris Sentient Core é um sistema de detecção de malware baseado em aprendiz
 Para iniciar o servidor Flask, execute:
 
 ```sh
-python -m lunaris-system.lunaris-core.app.main
+cd lunaris-sentient-core\lunaris-sentient-core-main\lunaris-system\lunaris-core
+python -m main.py
 ```
 
 ### Acessando a Aplicação
