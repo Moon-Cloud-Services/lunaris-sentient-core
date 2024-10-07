@@ -1,68 +1,74 @@
 # Lunaris Sentient Core
 
-## About the Project
+Lunaris Sentient Core é um sistema de detecção de malware baseado em aprendizado de máquina. Ele permite o treinamento de modelos de detecção de malware e o escaneamento de arquivos para identificar possíveis ameaças.
 
-Lunaris is a powerful AI security tool designed to protect servers against cyberattacks and malware. It offers advanced features for analyzing files, detecting anomalies in network traffic, and continuously self-training, becoming smarter with each file it checks.
+## Tabela de Conteúdos
 
-## Features
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
-1. **Anomaly Detection**:
-   - Monitors network traffic to identify suspicious or unusual behaviors.
-   - Uses machine learning models to detect anomalies in real-time.
+## Instalação
 
-2. **Malware Detection**:
-   - Continuous monitoring of files on the server.
-   - Analyzes newly downloaded files to detect potential malware.
-   - Self-trains based on newly verified files.
+### Pré-requisitos
 
-3. **Automatic Training**:
-   - Continuously self-trains based on newly verified files.
-   - Optional labels for auto-detection of previously submitted malware patterns.
+- Python 3.8 ou superior
+- pip (gerenciador de pacotes do Python)
 
-4. **User Interface**:
-   - User-friendly upload page for submitting files for training and scanning.
-   - Supports multiple file types, including `.exe`, `.csv`, and `.json`.
+### Passos para Instalação
 
-## Installation
+1. Clone o repositório:
 
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/Moon-Cloud-Services/lunaris-sentient-core.git
-   cd lunaris-sentient-core
+    ```sh
+    git clone https://github.com/seu-usuario/lunaris-sentient-core.git
+    cd lunaris-sentient-core
+    ```
 
-**2. Install Dependencies:**
+2. Crie um ambiente virtual:
 
-```bash
-pip install flask tensorflow scikit-learn pandas pefile
-```
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
+    ```
 
-**3. Run the Application:**
+3. Instale as dependências:
 
-```bash
-python -m app.main
-```
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+4. Configure as variáveis de ambiente:
+
+    Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
+
+    ```env
+    SECRET_KEY=sua_chave_secreta
+    ```
 
 ## Uso
 
-**4. Interface Web Acesse a página de upload:**
+### Executando o Servidor
 
-```bash
-Abra o navegador e vá para http://127.0.0.1:5000/upload_page
+Para iniciar o servidor Flask, execute:
+
+```sh
+python -m lunaris-system.lunaris-core.app.main
 ```
 
- ## Treinamento de Modelo
-```bash
-Arquivos Seguros: Envie arquivos seguros e defina o label como 0.
-Arquivos Maliciosos: Envie arquivos maliciosos e defina o label como 1.
-Labels Opcionais: Deixe o campo de labels vazio para auto-detecção.
-```
-## Escaneamento de Arquivos:
+### Acessando a Aplicação
 
-Envie um arquivo para escaneamento e veja os resultados.
+Abra o navegador e acesse `http://127.0.0.1:5000/`.
 
-# Treinamento do Modelo:
+### Treinando o Modelo
 
-Utilize o script lunaris_cli.py para treinar o modelo com os arquivos renomeados:
-```
-python lunaris_cli.py caminho/para/seu/arquivo.exe
-```
+1. Acesse a página de upload em `http://127.0.0.1:5000/upload_page`.
+2. Faça o upload de arquivos de malware e não-malware para treinamento.
+3. Clique no botão "Train Model" para treinar o modelo.
+
+### Escaneando Arquivos
+
+1. Acesse a página de upload em `http://127.0.0.1:5000/upload_page`.
+2. Faça o upload de um arquivo para escaneamento.
+3. O resultado do escaneamento será exibido na página.
