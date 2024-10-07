@@ -6,7 +6,6 @@ Lunaris Sentient Core é um sistema de detecção de malware baseado em aprendiz
 
 - [Instalação](#instalação)
 - [Uso](#uso)
-- [Estrutura do Projeto](#estrutura-do-projeto)
 
 ## Instalação
 
