@@ -1,6 +1,6 @@
+from sklearn.preprocessing import StandardScaler
 import pefile
 import logging
-from sklearn.preprocessing import StandardScaler
 
 logger = logging.getLogger(__name__)
 
@@ -18,22 +18,18 @@ def extract_features(filedata):
             pe.OPTIONAL_HEADER.AddressOfEntryPoint,
             pe.OPTIONAL_HEADER.BaseOfCode,
             pe.OPTIONAL_HEADER.ImageBase,
-            pe.FILE_HEADER.NumberOfSymbols,  # New feature
-            pe.FILE_HEADER.TimeDateStamp,    # New feature
-            pe.OPTIONAL_HEADER.CheckSum      # New feature
+            pe.FILE_HEADER.NumberOfSymbols,
+            pe.FILE_HEADER.TimeDateStamp,
+            pe.OPTIONAL_HEADER.CheckSum
         ]
         return features
     except pefile.PEFormatError as e:
         logger.error(f"Error extracting features: {e}")
-        return [0] * 10  # Adjust the number of features
+        return None
 
-scaler = StandardScaler()
-
-def preprocess_malware_data(data, fit=False):
+def preprocess_malware_data(features):
     """
-    Preprocesses malware data.
+    Scales the features using StandardScaler.
     """
-    if fit:
-        return scaler.fit_transform(data)
-    else:
-        return scaler.transform(data)
+    scaler = StandardScaler()
+    return scaler.fit_transform(features)
