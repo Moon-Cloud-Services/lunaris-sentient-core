@@ -8,6 +8,8 @@ from tqdm import tqdm
 from rich.logging import RichHandler
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
 from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
 from colorama import init, Fore, Style
 
 init(autoreset=True)
@@ -64,10 +66,7 @@ def train_model():
 app.register_blueprint(malware_controller.bp)
 
 def initialize_lunaris():
-    console.print("\n[cyan]" + "=" * 50 + "[/cyan]")
-    console.print("[magenta]Lunaris Sentient Core[/magenta]")
-    console.print("[cyan]" + "=" * 50 + "[/cyan]")
-    console.print("[yellow]Powered by Moon Cloud Services❤️[/yellow]\n")
+    console.print(Panel(Text("Lunaris Sentient Core", justify="center", style="bold magenta"), title="[cyan]" + "=" * 50 + "[/cyan]", subtitle="[yellow]Powered by Moon Cloud Services❤️[/yellow]"))
     
     logger.info("Starting Lunaris Sentient Core")
     
@@ -99,9 +98,7 @@ def initialize_lunaris():
     else:
         logger.info("Model already trained. Ready for use.")
     
-    console.print("\n[cyan]" + "=" * 50 + "[/cyan]")
-    console.print("[green]Lunaris Sentient Core is ready![/green]")
-    console.print("[cyan]" + "=" * 50 + "[/cyan]\n")
+    console.print(Panel(Text("Lunaris Sentient Core is ready!", justify="center", style="bold green"), title="[cyan]" + "=" * 50 + "[/cyan]"))
 
 if __name__ == "__main__":
     initialize_lunaris()
