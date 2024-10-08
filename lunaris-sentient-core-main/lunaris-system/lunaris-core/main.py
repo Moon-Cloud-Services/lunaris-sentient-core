@@ -5,32 +5,30 @@ import logging
 import os
 import time
 from tqdm import tqdm
+from rich.logging import RichHandler
+from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
+from rich.console import Console
 from colorama import init, Fore, Style
 
-# Initialize colorama for console colors
 init(autoreset=True)
 
-# Configure logging
+console = Console()
+
 def setup_logging():
-    log_format = f"{Fore.CYAN}%(asctime)s{Style.RESET_ALL} - {Fore.YELLOW}%(name)s{Style.RESET_ALL} - {Fore.GREEN}%(levelname)s{Style.RESET_ALL} - %(message)s"
     logging.basicConfig(
         level=logging.INFO,
-        format=log_format,
-        handlers=[
-            logging.FileHandler("lunaris.log"),
-            logging.StreamHandler()
-        ]
+        format="%(message)s",
+        datefmt="[%X]",
+        handlers=[RichHandler(console=console)]
     )
-    return logging.getLogger(__name__)
+    return logging.getLogger("lunaris")
 
 logger = setup_logging()
 
-# Create a Flask instance
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key')
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 
-# Initialize encryption
 encryption = Encryption(app.config['SECRET_KEY'])
 
 @app.route("/")
@@ -41,16 +39,16 @@ def home():
 @app.route('/scan_file', methods=['POST'])
 def scan_file():
     if 'file' not in request.files:
-        logger.error(f'{Fore.RED}No file found in the request{Style.RESET_ALL}')
+        logger.error('No file found in the request')
         return jsonify({"error": "No file found in the request"}), 400
     
     file = request.files['file']
     
     if file.filename == '':
-        logger.error(f'{Fore.RED}No file selected{Style.RESET_ALL}')
+        logger.error('No file selected')
         return jsonify({"error": "No file selected"}), 400
     
-    logger.info(f'{Fore.GREEN}Receiving file for scanning: {file.filename}{Style.RESET_ALL}')
+    logger.info(f'Receiving file for scanning: {file.filename}')
     filedata = file.read()
     prediction = malware_controller.malware_service.scan_malware(filedata)
     
@@ -58,38 +56,54 @@ def scan_file():
 
 @app.route('/train_model', methods=['POST'])
 def train_model():
-    logger.info(f"{Fore.YELLOW}Starting model training via endpoint{Style.RESET_ALL}")
+    logger.info("Starting model training via endpoint")
     malware_controller.malware_service.train_model()
-    logger.info(f"{Fore.GREEN}Model trained successfully{Style.RESET_ALL}")
+    logger.info("Model trained successfully")
     return jsonify({"message": "Model trained successfully"})
 
-# Register the malware controller blueprint
 app.register_blueprint(malware_controller.bp)
 
 def initialize_lunaris():
-    print(f"\n{Fore.CYAN}{'=' * 50}{Style.RESET_ALL}")
-    print(f"{Fore.MAGENTA}Lunaris Sentient Core{Style.RESET_ALL}")
-    print(f"{Fore.CYAN}{'=' * 50}{Style.RESET_ALL}")
-    print(f"{Fore.YELLOW}Powered by Moon Cloud Services❤️{Style.RESET_ALL}\n")
+    console.print("\n[cyan]" + "=" * 50 + "[/cyan]")
+    console.print("[magenta]Lunaris Sentient Core[/magenta]")
+    console.print("[cyan]" + "=" * 50 + "[/cyan]")
+    console.print("[yellow]Powered by Moon Cloud Services❤️[/yellow]\n")
     
     logger.info("Starting Lunaris Sentient Core")
     
-    for i in tqdm(range(5), desc=f"{Fore.GREEN}Initializing systems{Style.RESET_ALL}", ncols=70):
-        time.sleep(0.5)
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        BarColumn(),
+        TimeElapsedColumn(),
+        console=console,
+    ) as progress:
+        task = progress.add_task("[green]Initializing systems...", total=5)
+        for _ in range(5):
+            time.sleep(0.5)
+            progress.update(task, advance=1)
     
     if not malware_controller.malware_service.model_trained:
-        logger.info(f"{Fore.YELLOW}Model not trained. Starting initial training.{Style.RESET_ALL}")
-        for _ in tqdm(range(1), desc=f"{Fore.GREEN}Training initial model{Style.RESET_ALL}", ncols=70):
+        logger.info("Model not trained. Starting initial training.")
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            BarColumn(),
+            TimeElapsedColumn(),
+            console=console,
+        ) as progress:
+            task = progress.add_task("[green]Training initial model...", total=1)
             malware_controller.malware_service.train_model()
-        logger.info(f"{Fore.GREEN}Initial training completed{Style.RESET_ALL}")
+            progress.update(task, advance=1)
+        logger.info("Initial training completed")
     else:
-        logger.info(f"{Fore.GREEN}Model already trained. Ready for use.{Style.RESET_ALL}")
+        logger.info("Model already trained. Ready for use.")
     
-    print(f"\n{Fore.CYAN}{'=' * 50}{Style.RESET_ALL}")
-    print(f"{Fore.GREEN}Lunaris Sentient Core is ready!{Style.RESET_ALL}")
-    print(f"{Fore.CYAN}{'=' * 50}{Style.RESET_ALL}\n")
+    console.print("\n[cyan]" + "=" * 50 + "[/cyan]")
+    console.print("[green]Lunaris Sentient Core is ready![/green]")
+    console.print("[cyan]" + "=" * 50 + "[/cyan]\n")
 
 if __name__ == "__main__":
     initialize_lunaris()
-    logger.info(f"{Fore.YELLOW}Starting Flask server{Style.RESET_ALL}")
+    logger.info("Starting Flask server")
     app.run(debug=True)
