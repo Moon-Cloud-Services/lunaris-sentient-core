@@ -53,7 +53,7 @@ Para iniciar o servidor Flask, execute:
 cd lunaris-sentient-core\lunaris-sentient-core-main\lunaris-system\lunaris-core
 python main.py
 ```
-## Crie Pasta 0 e 1 em
+## Crie Pasta 0 e 1 e adicione 3 arquivos em cada pasta, 0 = benigno 1 = Malware
 
 ```sh
 cd lunaris-sentient-core\lunaris-sentient-core-main\lunaris-system\lunaris-core\training_data
