@@ -1,76 +1,83 @@
 # Lunaris Sentient Core
 
-Lunaris Sentient Core é um sistema de detecção de malware baseado em aprendizado de máquina. Ele permite o treinamento de modelos de detecção de malware e o escaneamento de arquivos para identificar possíveis ameaças.
+Lunaris Sentient Core is a machine learning-based malware detection system. It allows for the training of malware detection models and the scanning of files to identify potential threats.
 
-## Tabela de Conteúdos
+## Table of Contents
 
-- [Instalação](#instalação)
-- [Uso](#uso)
+- [Installation](#installation)
+- [Usage](#usage)
 
-## Instalação
+## Installation
 
-### Pré-requisitos
+### Prerequisites
 
-- Python 3.8 ou superior
-- pip (gerenciador de pacotes do Python)
+- Python 3.8 or higher
+- pip (Python package manager)
 
-### Passos para Instalação
+### Installation Steps
 
-1. Clone o repositório:
+1. Clone the repository:
 
     ```sh
     git clone https://github.com/Moon-Cloud-Services/lunaris-sentient-core.git
     cd lunaris-sentient-core\lunaris-sentient-core-main
     ```
 
-2. Crie um ambiente virtual:
+2. Create a virtual environment:
 
     ```sh
     python -m venv venv
     ```
 
-3. Instale as dependências:
+3. Install dependencies:
 
     ```sh
     pip install -r requirements.txt
     ```
 
-4. Configure as variáveis de ambiente:
+4. Configure environment variables:
 
-    Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
+    Create a `.env` file at the root of the project and add the following variables:
 
     ```env
-    SECRET_KEY=sua_chave_secreta
+    SECRET_KEY=your_secret_key
     ```
 
-## Uso
+## Usage
 
-### Executando o Servidor
+### Running the Server
 
-Para iniciar o servidor Flask, execute:
+To start the Flask server, run:
 
 ```sh
 cd lunaris-sentient-core\lunaris-sentient-core-main\lunaris-system\lunaris-core
 python main.py
 ```
-## Crie Pasta 0 e 1 e adicione 3 arquivos em cada pasta, 0 = benigno 1 = Malware
+
+### Accessing the Application
+
+Open your browser and go to `http://127.0.0.1:5000/`.
+
+### Training the Model
+
+1. Go to the upload page at `http://127.0.0.1:5000/upload_page`.
+2. Upload malware and non-malware files for training.
+3. Click the "Train Model" button to train the model.
+
+### Scanning Files
+
+1. Go to the upload page at `http://127.0.0.1:5000/upload_page`.
+2. Upload a file for scanning.
+3. The scan result will be displayed on the page.
+
+### Training Data Folder Structure
+
+To train the model, it is important to add files to the `training_data` folder with the following subfolders:
+- `1` for malware files
+- `0` for non-malware files
+
+Create the `training_data` folder and add three files in each subfolder (`0` and `1`):
 
 ```sh
 cd lunaris-sentient-core\lunaris-sentient-core-main\lunaris-system\lunaris-core\training_data
 ```
-
-### Acessando a Aplicação
-
-Abra o navegador e acesse `http://127.0.0.1:5000/`.
-
-### Treinando o Modelo
-
-1. Acesse a página de upload em `http://127.0.0.1:5000/upload_page`.
-2. Faça o upload de arquivos de malware e não-malware para treinamento.
-3. Clique no botão "Train Model" para treinar o modelo.
-
-### Escaneando Arquivos
-
-1. Acesse a página de upload em `http://127.0.0.1:5000/upload_page`.
-2. Faça o upload de um arquivo para escaneamento.
-3. O resultado do escaneamento será exibido na página.
