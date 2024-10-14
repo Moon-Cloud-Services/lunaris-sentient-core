@@ -1,0 +1,6 @@
+Flask~=3.0.3
+TensorFlow~=2.17.0
+Rich~=13.9.2
+numpy~=1.26.4
+requests~=2.32.3
+Werkzeug~=3.0.4

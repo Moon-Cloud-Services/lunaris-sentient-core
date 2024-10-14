@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunaris Sentient Core</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Lunaris Sentient Core</h1>
+    <form id="file-upload-form">
+        <div class="file-upload-wrapper">
+            <input type="file" id="file-selector" name="file" accept=".exe,.dll,.vir.log" required>
+            <label for="file-selector">Choose a file</label>
+        </div>
+        <button type="submit">Analyze</button>
+    </form>
+    <div id="progress-wrapper" class="hidden">
+        <div id="progress-indicator" class="progress-bar"></div>
+        <p id="progress-status">Analyzing...</p>
+    </div>
+    <div id="analysis-result" class="hidden result"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
