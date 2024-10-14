@@ -74,7 +74,7 @@ Lunaris Sentient Core is an open-source project, and contributions are welcome! 
 
 ## 📬 **Contact**
 
-For any questions or feedback, feel free to reach out to us at: **support@mooncloudservices.tech or https://discord.gg/PQkUJnxB44 **
+For any questions or feedback, feel free to reach out to us at: **support@mooncloudservices.tech** or **https://discord.gg/PQkUJnxB44**
 
 ---
 
