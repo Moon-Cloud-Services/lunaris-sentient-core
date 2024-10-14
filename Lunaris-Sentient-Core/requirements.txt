@@ -4,3 +4,4 @@ Rich~=13.9.2
 numpy~=1.26.4
 requests~=2.32.3
 Werkzeug~=3.0.4
+pefile
