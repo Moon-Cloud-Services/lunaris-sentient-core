@@ -1,8 +1,6 @@
----
-
 # **Lunaris Sentient Core - Version 1.6 Beta**
 
-**Lunaris Sentient Core** is an advanced AI-driven cybersecurity system designed to detect malware and perform detailed file analysis. In this 1.6 Beta release, several improvements have been implemented, focusing on enhanced user experience, performance, and professional logs.
+**Lunaris Sentient Core** is an advanced AI-driven cybersecurity system designed to detect malware and perform detailed file analysis. In this 1.6 Beta release, several improvements have been implemented, focusing on enhanced user experience, performance, and professional logs.**
 
 ## 🌟 **What's New in Version 1.6 Beta**
 
@@ -81,5 +79,3 @@ For any questions or feedback, feel free to reach out to us at: **support@mooncl
 ---
 
 Thank you for using **Lunaris Sentient Core**! We're committed to continuously improving the project to offer an even more robust and efficient cybersecurity solution.
-
---- 
